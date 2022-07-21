@@ -1,0 +1,77 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "type": "shell",
+            "label": "g++ build project",
+            "command": "/usr/bin/g++",
+            "args": [
+                "-std=c++11",
+                "-I",
+                "${workspaceFolder}/src",
+                "-g",
+                "${workspaceFolder}/src/net/client/impl/project2_client.cc",
+                "${workspaceFolder}/src/net/client/service/connection_service.cc",
+                "${workspaceFolder}/src/net/client/client_components.cc",
+                "${workspaceFolder}/src/net/client/client.cc",
+                "${workspaceFolder}/src/net/mutex/distributed_mutual_exclusion_service.cc",
+                "${workspaceFolder}/src/net/mutex/mutual_exclusion_service.cc",
+                "${workspaceFolder}/src/net/proto/async_message_service.cc",
+                "${workspaceFolder}/src/net/proto/messages.cc",
+                "${workspaceFolder}/src/net/peer/service/node_id_service.cc",
+                "${workspaceFolder}/src/net/peer/service/receive_handshake_service.cc",
+                "${workspaceFolder}/src/net/peer/service/send_handshake_service.cc",
+                "${workspaceFolder}/src/net/peer/peer_acceptor.cc",
+                "${workspaceFolder}/src/net/peer/peer_components.cc",
+                "${workspaceFolder}/src/net/peer/peer_connector.cc",
+                "${workspaceFolder}/src/net/peer/peer_network_manager.cc",
+                "${workspaceFolder}/src/net/server/impl/client_server_connection_handler_factory.cc",
+                "${workspaceFolder}/src/net/server/impl/client_server_connection_handler.cc",
+                "${workspaceFolder}/src/net/server/impl/project2_service.cc",
+                "${workspaceFolder}/src/net/server/service/file_service.cc",
+                "${workspaceFolder}/src/net/server/acceptor.cc",
+                "${workspaceFolder}/src/net/server/base_connection_handler.cc",
+                "${workspaceFolder}/src/net/server/base_service.cc",
+                "${workspaceFolder}/src/net/server/connection_manager.cc",
+                "${workspaceFolder}/src/net/server/server_components.cc",
+                "${workspaceFolder}/src/net/server/server.cc",
+                "${workspaceFolder}/src/net/shared/base_connection_service.cc",
+                "${workspaceFolder}/src/net/shared/temp_file_service.cc",
+                "${workspaceFolder}/src/net/components.cc",
+                "${workspaceFolder}/src/net/connectable_socket.cc",
+                "${workspaceFolder}/src/net/connection.cc",
+                "${workspaceFolder}/src/net/error.cc",
+                "${workspaceFolder}/src/net/location.cc",
+                "${workspaceFolder}/src/net/network_service.cc",
+                "${workspaceFolder}/src/net/socket.cc",
+                "${workspaceFolder}/src/program/options.cc",
+                "${workspaceFolder}/src/program/options_parser.cc",
+                "${workspaceFolder}/src/program/properties.cc",
+                "${workspaceFolder}/src/thread/thread_pool.cc",
+                "${workspaceFolder}/src/util/buffer.cc",
+                "${workspaceFolder}/src/util/console.cc",
+                "${workspaceFolder}/src/util/error.cc",
+                "${workspaceFolder}/src/util/filesystem.cc",
+                "${workspaceFolder}/src/util/optional.cc",
+                "${workspaceFolder}/src/util/path.cc",
+                "${workspaceFolder}/src/util/strings.cc",
+                "${workspaceFolder}/src/util/thread_blocker.cc",
+                "${workspaceFolder}/src/main.cc",
+                "-o",
+                "${workspaceFolder}/run",
+                "-pthread",
+                "-Werror=return-type"
+            ],
+            "options": {
+                "cwd": "/usr/bin"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        }
+    ]
+}

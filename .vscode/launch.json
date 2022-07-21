@@ -1,0 +1,35 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "g++ build and debug project",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/run",
+            "args": [
+                // "--id=3",
+                // "--props_file=server.properties",
+                // "--server",
+                // "--port=8003"
+                "--id=1",
+                "--props_file=client.properties",
+                "--client",
+                "--port=7001"
+            ],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "gdb",
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                }
+            ],
+            // "preLaunchTask": "g++ build project",
+            "miDebuggerPath": "/usr/bin/gdb"
+        }
+    ]
+}
