@@ -13,8 +13,7 @@ using validate_func = std::function<bool(const T&)>;
 // Returns the only value left, regardless of whether it passes the validation
 // function or not.
 template <typename T>
-T resolve_default_value(const std::function<bool(const T&)>& validate,
-                        const T& val) {
+T resolve_default_value(const validate_func<T>& validate, const T& val) {
     return val;
 }
 
@@ -22,8 +21,8 @@ T resolve_default_value(const std::function<bool(const T&)>& validate,
 // Returns the first value to pass the validation function.Will return the very
 // last value regardless of whether it passes the validation function or not.
 template <typename T, typename... Ts>
-T resolve_default_value(const std::function<bool(const T&)>& validate,
-                        const T& val, const T& val2, const Ts&... vals) {
+T resolve_default_value(const validate_func<T>& validate, const T& val,
+                        const T& val2, const Ts&... vals) {
     return validate(val) ? val
                          : resolve_default_value<T>(validate, val2, vals...);
 }

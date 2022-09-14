@@ -145,7 +145,7 @@ class path::iterator {
     pointer operator->() const;
 
    private:
-    internal_iterator increment(const std::string::const_iterator& pos) const;
+    internal_iterator increment(const internal_iterator& pos) const;
     internal_iterator decrement(const internal_iterator& pos) const;
     void update_current();
 
