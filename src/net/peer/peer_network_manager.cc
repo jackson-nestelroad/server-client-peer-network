@@ -68,13 +68,9 @@ util::result<void, Error> PeerNetworkManager::SetUp() {
             "Property \"servers\" must be set in properties file");
     }
 
-    auto localhost_result = Location::FromHostName("localhost", my_port_);
-    RETURN_IF_ERROR(localhost_result);
-    Location localhost = std::move(localhost_result).ok();
-
-    auto my_ip_result = Location::MyIpAddress();
-    RETURN_IF_ERROR(my_ip_result);
-    Location my_ip = std::move(my_ip_result).ok();
+    ASSIGN_OR_RETURN(Location localhost,
+                     Location::FromHostName("localhost", my_port_));
+    ASSIGN_OR_RETURN(Location my_ip, Location::MyIpAddress());
     my_ip.port = my_port_;
 
     // For each server, save the actual host name in the host entry table.
@@ -97,9 +93,8 @@ util::result<void, Error> PeerNetworkManager::SetUp() {
             port = port_result.ok();
         }
 
-        auto target_location_result = Location::FromHostName(name, port);
-        RETURN_IF_ERROR(target_location_result);
-        auto target_location = std::move(target_location_result).ok();
+        ASSIGN_OR_RETURN(auto target_location,
+                         Location::FromHostName(name, port));
 
         if (localhost == target_location || my_ip == target_location) {
             // Don't connect to yourself.

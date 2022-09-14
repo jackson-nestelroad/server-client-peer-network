@@ -143,9 +143,7 @@ util::result<void, Error> AsyncMessageService::ProcessAllBytes() {
             break;
         }
 
-        auto res = ProcessBytes(bytes_available);
-        RETURN_IF_ERROR(res);
-        progress_can_be_made = res.ok();
+        ASSIGN_OR_RETURN(progress_can_be_made, ProcessBytes(bytes_available));
     }
 
     return util::ok;
@@ -306,9 +304,7 @@ util::result<void, Error> AsyncMessageService::FillOutputBuffer(Message&& msg) {
                 // we are a client or server. This is part of the project
                 // specifications.
 
-                auto res = std::move(msg).ToFileTransfer();
-                RETURN_IF_ERROR(res);
-                FileTransferMessage& msg = res.ok();
+                ASSIGN_OR_RETURN(auto& msg, std::move(msg).ToFileTransfer());
 
                 std::ifstream file(msg.file_name, std::ios::binary);
                 if (!file) {
